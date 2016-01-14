@@ -1,0 +1,21 @@
+{
+  "name": "yoink",
+  "version": "1.0.0",
+  "description": "lib enabling cross-browser dynamic file downloads",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "standard-format -w src/** && standard src/**",
+    "start": "beefy test/index.js --live -- -r ./src/index.js:yoink"
+  },
+  "keywords": [ "cross-browser", "download"],
+  "author": "Sam Placette <sam@samplacette.com> (http://samplacette.com)",
+  "license": "MIT",
+  "dependencies": {
+    "window-shim": "^1.0.0"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.5",
+    "browserify": "^12.0.1",
+    "standard": "^5.4.1"
+  }
+}
