@@ -6,7 +6,7 @@ file system.
 
 ## What it is
 
-Yoink accepts four parameters:
+The main Yoink method accepts four parameters:
 
  * `data`: the content of the file to be downloaded
  * `encoding`: the encoding of the data; the only supported values
@@ -16,6 +16,22 @@ Yoink accepts four parameters:
    to "application/octet-stream"
  * `filename`: the desired name of the downloaded file; defaults to
    `"download"`
+
+Example:
+
+    require('yoink')({
+      data: 'Hello World!',
+      contentType: 'text/plain',
+      filename: 'yoink.txt'
+    })
+
+It is also possible to query the user-agent for support at runtime.
+
+Example:
+
+    require('yoink').canYoink() // returns a Boolean value indicating support
+
+See `test/index.js` for a working example.
 
 ## How it do
 
