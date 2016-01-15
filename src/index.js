@@ -9,11 +9,11 @@ var window = require('window-shim')
  * IANA media type.
  * @param {string} [params.encoding] - Encoding type, e.g. "base64"
  * @param {string} params.data - contents of file to be downloaded
- * @throws {Error} - Will throw an error if `yoink` is not supported
+ * @throws {Error} - Will throw an error if `yoinkit` is not supported
  * on the current user-agent
  */
-var yoink = function yoink (params) {
-  if (! yoink.canYoink()) {
+var yoinkit = function yoinkit (params) {
+  if (!yoinkit.canYoinkit()) {
     throw new Error('This user-agent does not support downloading dynamic data')
   }
 
@@ -28,13 +28,13 @@ var yoink = function yoink (params) {
   //    do not support the data URL method.
   if (window.navigator.msSaveBlob) {
     var blobSource
-    if (encoding == 'base64') {
+    if (encoding === 'base64') {
       // In order to support non-text content types like images,
       // we must convert the data to binary and then create
       // a `Blob` object with the appropriate content-type.
       // See technique discussed in more detail at
       // http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript/16245768#16245768
-      var byteString = atob(data)
+      var byteString = window.atob(data)
       var byteNumbers = new Array(byteString.length)
       console.log('byteString.length', byteString.length)
       console.log('byteNumbers.length', byteNumbers.length)
@@ -43,14 +43,12 @@ var yoink = function yoink (params) {
       }
       var byteArray = new Uint8Array(byteNumbers)
       blobSource = [byteArray]
-    }
-    else {
+    } else {
       blobSource = [data]
     }
-    var blob = new Blob(blobSource, {type: contentType})
+    var blob = new window.Blob(blobSource, {type: contentType})
     window.navigator.msSaveBlob(blob, filename)
-  }
-  else {
+  } else {
     // Create link to specified data.
     var anchor = window.document.createElement('a')
 
@@ -76,30 +74,29 @@ var yoink = function yoink (params) {
     body.appendChild(anchor)
     if (anchor.click) {
       anchor.click()
-    }
-    else {
-      var clickEvent = document.createEvent('HTMLEvents');
-      clickEvent.initEvent('click', true, true); 
-      anchor.dispatchEvent(clickEvent);
+    } else {
+      var clickEvent = document.createEvent('HTMLEvents')
+      clickEvent.initEvent('click', true, true)
+      anchor.dispatchEvent(clickEvent)
     }
     body.removeChild(anchor)
   }
 }
 
 /**
- * @return {boolean} - if `yoink` lib is supported on this user-agent
+ * @return {boolean} - if `yoinkit` lib is supported on this user-agent
  */
-yoink.canYoink = function canYoink () {
-  // Only scenario where we cannot yoink is when
+yoinkit.canYoinkit = function canYoinkit () {
+  // Only scenario where we cannot yoinkit is when
   // user is on a version of IE which does not support the
   // `msSaveBlob` API.
-  return ! (
-    window &&
-    window.navigator &&
-    window.navigator.userAgent &&
-    window.navigator.userAgent.match(/MSIE/) &&
-    (! window.navigator.msSaveBlob)
+  return !(
+  window &&
+  window.navigator &&
+  window.navigator.userAgent &&
+  window.navigator.userAgent.match(/MSIE/) &&
+  (!window.navigator.msSaveBlob)
   )
 }
 
-module.exports = yoink
+module.exports = yoinkit

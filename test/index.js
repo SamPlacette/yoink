@@ -1,4 +1,4 @@
-var yoink = require('yoink')
+var yoinkit = require('yoinkit')
 
 document.getElementsByTagName('body')[0].innerHTML = [
   '<style type="text/css">',
@@ -6,15 +6,15 @@ document.getElementsByTagName('body')[0].innerHTML = [
     'form { margin: 2em; }',
   '</style>',
 
-  '<h1>Yoink!</h1>',
-  '<p><strong>canihasYoink?</strong> <span id="can-yoink"></span></p>',
+  '<h1>Yoinkit!</h1>',
+  '<p><strong>Can I Yoink it?</strong> <span id="can-yoinkit"></span></p>',
 
   '<button id="apply-text-values">Apply Text Values</button>',
   '<button id="apply-image-values">Apply Image Values</button>',
   
-  '<form id="yoink-form">',
+  '<form id="yoinkit-form">',
     '<label for="filename">Filename:<br/>',
-      '<input id="filename" value="yoink.txt" />',
+      '<input id="filename" value="yoinkit.txt" />',
     '</label>',
     '<label for="content-type">Content Type:<br/>',
       '<input id="content-type" value="text/plain" />',
@@ -25,12 +25,12 @@ document.getElementsByTagName('body')[0].innerHTML = [
     '<label for="data">Data:',
       '<textarea id="data">Hello World!</textarea>',
     '</label>',
-    '<button id="yoink">Yoink!</button>',
+    '<button id="yoinkit">Yoinkit!</button>',
   '</form>'
 ].join('\n')
 
-document.getElementById('can-yoink').innerText =
-  yoink.canYoink() ? 'Yoink On!' : 'Bummer... no yoink here.'
+document.getElementById('can-yoinkit').innerText =
+  yoinkit.canYoinkit() ? 'Yes you can!' : 'Bummer... no yoinkit here.'
 
 var filenameField = document.getElementById('filename')
 var contentTypeField = document.getElementById('content-type')
@@ -39,7 +39,7 @@ var dataField = document.getElementById('data')
 
 document.getElementById('apply-text-values').addEventListener('click',
   function applyTextValues() {
-    filenameField.value = 'yoink.txt'
+    filenameField.value = 'yoinkit.txt'
     contentTypeField.value = 'text/plain'
     encodingField.value = ''
     dataField.value = 'Hello World!'
@@ -48,7 +48,7 @@ document.getElementById('apply-text-values').addEventListener('click',
 
 document.getElementById('apply-image-values').addEventListener('click',
   function applyImageValues() {
-    filenameField.value = 'yoink.png'
+    filenameField.value = 'yoinkit.png'
     contentTypeField.value = 'image/png'
     encodingField.value = 'base64'
     // From https://en.wikipedia.org/wiki/Data_URI_scheme
@@ -58,10 +58,10 @@ document.getElementById('apply-image-values').addEventListener('click',
   }
 )
 
-document.getElementById('yoink-form').addEventListener('submit',
-  function submitYoinkForm(event) {
+document.getElementById('yoinkit-form').addEventListener('submit',
+  function submitYoinkitForm(event) {
     event.preventDefault()
-    yoink({
+    yoinkit({
       filename: filenameField.value,
       contentType: contentTypeField.value,
       encoding: encodingField.value,

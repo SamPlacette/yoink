@@ -1,11 +1,11 @@
 {
-  "name": "yoink",
+  "name": "yoinkit",
   "version": "1.0.0",
   "description": "lib enabling cross-browser dynamic file downloads",
   "main": "src/index.js",
   "scripts": {
     "lint": "standard-format -w src/** && standard src/**",
-    "start": "beefy test/index.js --live -- -r ./src/index.js:yoink"
+    "start": "beefy test/index.js --live -- -r ./src/index.js:yoinkit"
   },
   "keywords": [ "cross-browser", "download"],
   "author": "Sam Placette <sam@samplacette.com> (http://samplacette.com)",
