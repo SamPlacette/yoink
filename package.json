@@ -1,6 +1,6 @@
 {
   "name": "yoinkit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "lib enabling cross-browser dynamic file downloads",
   "main": "src/index.js",
   "files": [
@@ -14,7 +14,10 @@
     "build": "browserify -r ./src/index.js:yoinkit > dist/yoinkit.js",
     "prepublish": "npm run build"
   },
-  "keywords": [ "cross-browser", "download"],
+  "keywords": [
+    "cross-browser",
+    "download"
+  ],
   "author": "Sam Placette <sam@samplacette.com> (http://samplacette.com)",
   "license": "MIT",
   "dependencies": {
