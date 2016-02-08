@@ -44,6 +44,11 @@ In Microsoft browsers, Yoinkit will use Microsoft's proprietary
 Yoinkit is a CommonJS module and may be embedded within a browser
 using tools like Browserify or Webpack.
 
+## Sign me up!
+
+Either compile from `src/` using Browserify, or inject the compiled
+script from `dist/` using a good old `<script>` tag.
+
 ## Restrictions
 
 Yoinkit does not work in IE versions 9 and below.

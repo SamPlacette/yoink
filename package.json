@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "lib enabling cross-browser dynamic file downloads",
   "main": "src/index.js",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "lint": "standard-format -w src/** && standard src/**",
-    "start": "beefy test/index.js --live -- -r ./src/index.js:yoinkit"
+    "start": "beefy test/index.js --live -- -r ./src/index.js:yoinkit",
+    "prebuild": "mkdir dist",
+    "build": "browserify -r ./src/index.js:yoinkit > dist/yoinkit.js",
+    "prepublish": "npm run build"
   },
   "keywords": [ "cross-browser", "download"],
   "author": "Sam Placette <sam@samplacette.com> (http://samplacette.com)",
