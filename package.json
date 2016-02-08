@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "standard-format -w src/** && standard src/**",
     "start": "beefy test/index.js --live -- -r ./src/index.js:yoinkit",
-    "prebuild": "mkdir dist",
+    "prebuild": "mkdir -p dist",
     "build": "browserify -r ./src/index.js:yoinkit > dist/yoinkit.js",
     "prepublish": "npm run build"
   },
